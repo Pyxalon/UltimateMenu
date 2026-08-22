@@ -178,6 +178,15 @@ RN = FMg + 29548
 TEQUILA = FMg + 29547
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MANSION_BOOST_DURATION = FMg + 37015
+MANSION_METH_BOOST     = FMg + 37016
+MANSION_WEED_BOOST     = FMg + 37017
+MANSION_COKE_BOOST     = FMg + 37018
+MANSION_CASH_BOOST     = FMg + 37019
+MANSION_DOCS_BOOST     = FMg + 37020
+MANSION_BUNKER_BOOST   = FMg + 37021
+MANSION_ACID_BOOST     = FMg + 37022
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Required Stats----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -3503,6 +3512,36 @@ L7NEG7 = makeOnlineTab(L7NEG:add_tab("Ultimate Money Methods Menu"))
 BusinessesMenu = makeOnlineTab(L7NEG7:add_tab("Businesses Menu"))
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+MansionBoostMenu = makeOnlineTab(BusinessesMenu:add_tab("Business Production Boost"))
+MANSIONBOOSTCB = MansionBoostMenu:add_checkbox("Business Production Boost")
+script.register_looped("mansion_business_production_boost", function(script)
+    script:yield()
+
+    if MANSIONBOOSTCB:is_enabled() then
+        globals.set_int(MANSION_BOOST_DURATION, 86400)
+
+        globals.set_float(MANSION_METH_BOOST, 3.0)
+        globals.set_float(MANSION_WEED_BOOST, 3.0)
+        globals.set_float(MANSION_COKE_BOOST, 3.0)
+        globals.set_float(MANSION_CASH_BOOST, 3.0)
+        globals.set_float(MANSION_DOCS_BOOST, 3.0)
+        globals.set_float(MANSION_BUNKER_BOOST, 3.0)
+        globals.set_float(MANSION_ACID_BOOST, 3.0)
+    else
+        globals.set_int(MANSION_BOOST_DURATION, 86400)
+
+        globals.set_float(MANSION_METH_BOOST, 1.0)
+        globals.set_float(MANSION_WEED_BOOST, 1.0)
+        globals.set_float(MANSION_COKE_BOOST, 1.0)
+        globals.set_float(MANSION_CASH_BOOST, 1.0)
+        globals.set_float(MANSION_DOCS_BOOST, 1.0)
+        globals.set_float(MANSION_BUNKER_BOOST, 1.0)
+        globals.set_float(MANSION_ACID_BOOST, 1.0)
+    end
+end)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 AirCargoMenu = makeOnlineTab(BusinessesMenu:add_tab("Air Cargo Menu"))
 
